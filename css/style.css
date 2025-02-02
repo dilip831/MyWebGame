@@ -1,8 +1,8 @@
 /* Center the parent in the page */
 .parent {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     background-color: lightcoral;
 
     /* Flexbox to center the parent in the viewport */
@@ -42,3 +42,8 @@
     height: 100vh;            /* Full viewport height */
     text-align: center;       /* Center text */
 }
+
+  .game-nav{
+    text-align: center;
+    background-color: aqua;
+  }

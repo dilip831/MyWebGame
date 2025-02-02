@@ -12,8 +12,17 @@
 <script src="js/script.js"></script>
 <body>    
     <div ng-app="myApp" ng-controller = "myCtrl">
-      <div class="center-page">
-        <h1 id="win-text" ng-show="flag">🏆 You Won! 🏆</h1>
+      <div class="game-nav">
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="2"> 2 X 2</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="3"> 3 X 3</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="4"> 4 X 4</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="5"> 5 X 5</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="6"> 6 X 6</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="7"> 7 X 7</label>
+      </div>
+      <!-- <p>Game : <input ng-model="level" ng-change = "setterFun();" type="number"></p> -->
+      <div class="center-page">        
+        <h1 id="win-text" ng-show="flag" >🏆 You Won! 🏆</h1>
       </div>
       <div id ="parent" class="parent">
         <div class="child" ng-repeat = "obj in myobj" id="child{{obj.v}}" 

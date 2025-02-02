@@ -1,11 +1,17 @@
 var app = angular.module('myApp',[]);
-app.controller('myCtrl',function($scope){    
-    // Example usage
-    const n = 4;
+app.controller('myCtrl',function($scope){  
+    $scope.setterFun = function(){
+        // Example usage
+    let n = 4;
+    if($scope.level)
+    {
+        n = $scope.level;
+    }
+    $scope.n = n;
     $scope.elen = 100;
     let eleLen = 100;    
-    if (n > 4){
-        eleLen = Math.floor(400/n);
+    if (n > 2){
+        eleLen = Math.floor(350/n);
         console.log("Original List:", eleLen);
         //boxLen = eleLen*n;
     }
@@ -14,6 +20,7 @@ app.controller('myCtrl',function($scope){
     parent.style.width = n*eleLen + 'px';
     parent.style.height = n*eleLen + 'px';
     const grid = n*n - 1;
+    $scope.grid = grid;
     const myList = [];
     for (let i = 0 ; i < grid ; i++){
         myList.push(i);
@@ -41,6 +48,9 @@ app.controller('myCtrl',function($scope){
     $scope.myobj = b;
     $scope.flag = false;
     $scope.empty = {x:eleLen*(n-1),y:eleLen*(n-1)};
+
+    }   
+    
     $scope.fun = function (i,$event){
     const ele = $event.target;
     let currentTop = parseInt(window.getComputedStyle(ele).top);
@@ -48,7 +58,7 @@ app.controller('myCtrl',function($scope){
     let emptyTop = $scope.empty.y;
     let emptyLeft = $scope.empty.x;
     let d = (currentTop-emptyTop)*(currentTop-emptyTop) + (currentLeft - emptyLeft)*(currentLeft - emptyLeft);
-    if (d <= 100*100){
+    if (d <= $scope.elen*$scope.elen){
         ele.style.top = $scope.empty.y + 'px';
         ele.style.left = $scope.empty.x + 'px';        
         $scope.empty.y = currentTop;
@@ -57,9 +67,9 @@ app.controller('myCtrl',function($scope){
         $scope.myobj[i].x = emptyLeft;
     }
     let flag = 1;
-    for(var k = 0; k< grid; k++){
-        let curVal = 1*$scope.myobj[k].x + n*$scope.myobj[k].y;
-        if (curVal == eleLen*k){
+    for(var k = 0; k< $scope.grid; k++){
+        let curVal = 1*$scope.myobj[k].x + $scope.n*$scope.myobj[k].y;
+        if (curVal == $scope.elen*k){
         flag = flag*1;
         }else{
         flag = flag*0;
@@ -71,6 +81,8 @@ app.controller('myCtrl',function($scope){
     }
     console.log($scope.empty.x,$scope.empty.y);        
     };
+
+    $scope.setterFun();
 
     
     
