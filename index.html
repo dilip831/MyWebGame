@@ -4,46 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyWebGame</title>
-    <style>
-      /* Center the parent in the page */
-      .parent {
-        position: relative;
-        width: 300px;
-        height: 300px;
-        background-color: lightcoral;
-  
-        /* Flexbox to center the parent in the viewport */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
-        /* Center parent itself */
-        margin: auto;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        position: absolute;
-      }
-  
-      /* Position the child inside the parent */
-      .child {
-        position: absolute;
-        top: 0px;  /* 50px from the top of the parent */
-        left: 0px; /* 50px from the left of the parent */
-        width: 100px;
-        height: 100px;
-        background-color: lightgreen;
-        border: 10px black;
-        border: 3px solid blue; /* Red border */
-        border-radius: 10px;   /* Rounded corners with 10px radius */
-        font-size: 50px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css">    
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="js/script.js"></script>
 <body>    
     <div ng-app="myApp" ng-controller = "myCtrl">
       <div class="parent">
@@ -57,78 +21,4 @@
     </div>  
     
 </body>
-<script>
-    var app = angular.module('myApp',[]);
-    app.controller('myCtrl',function($scope){
-      function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          // Generate a random index between 0 and i
-          const randomIndex = Math.floor(Math.random() * (i + 1));
-          
-          // Swap elements at index i and randomIndex
-          [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
-        }
-        return array;
-      }
-      
-      // Example usage
-      const myList = [0, 1, 2, 3, 4, 5, 6, 7];
-      console.log("Original List:", myList);
-      
-      const shuffledList = shuffleArray(myList);
-      console.log("Shuffled List:", shuffledList);
-
-      $scope.myobj = [{x:0,y:0,v:1},{x:100,y:100,v:2}];
-      const a = [];
-      for(var i = 0; i < 3; i++){
-        for(var j= 0; j <3; j++){
-          if(!(i == 2 && j == 2))
-          a.push({x:100*j,y:100*i,v:3*i+j});
-        }     
-        
-      }
-      const b = [];
-      for(var p = 0; p<8;p++ ){
-        let temVar = a[shuffledList[p]];
-        b.push({x:temVar.x,y:temVar.y,v:p});
-      }
-      $scope.myobj = b;
-      $scope.flag = false;
-      $scope.empty = {x:200,y:200};
-      $scope.fun = function (i,$event){
-        //var ele = document.getElementById("child"+i);
-
-        const ele = $event.target;
-        let currentTop = parseInt(window.getComputedStyle(ele).top);
-        let currentLeft = parseInt(window.getComputedStyle(ele).left);
-        let emptyTop = $scope.empty.y;
-        let emptyLeft = $scope.empty.x;
-        let d = (currentTop-emptyTop)*(currentTop-emptyTop) + (currentLeft - emptyLeft)*(currentLeft - emptyLeft);
-        if (d <= 100*100){
-          ele.style.top = $scope.empty.y + 'px';
-          ele.style.left = $scope.empty.x + 'px';        
-          $scope.empty.y = currentTop;
-          $scope.empty.x = currentLeft;
-          $scope.myobj[i].y = emptyTop;
-          $scope.myobj[i].x = emptyLeft;
-        }
-        let flag = 1;
-        for(var k = 0; k<8; k++){
-          let curVal = 1*$scope.myobj[k].x + 3*$scope.myobj[k].y;
-          if (curVal == 100*k){
-            flag = flag*1;
-          }else{
-            flag = flag*0;
-          }
-        }
-        if (flag == 1){
-          $scope.flag = true;
-        }
-        console.log($scope.empty.x,$scope.empty.y);        
-      };
-        
-    }); 
-    
-    
-</script>
 </html>
