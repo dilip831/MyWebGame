@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="css/style.css">    
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 <script src="js/script.js"></script>
 <body>    
     <div ng-app="myApp" ng-controller = "myCtrl">
-      <div class="parent">
-        <div class="child" ng-repeat = "obj in myobj" id="child{{obj.v}}" style="top:{{obj.y}}px;left:{{obj.x}}px" ng-click="fun(obj.v,$event);">
+      <div class="center-page">
+        <h1 id="win-text" ng-show="flag">🏆 You Won! 🏆</h1>
+      </div>
+      <div id ="parent" class="parent">
+        <div class="child" ng-repeat = "obj in myobj" id="child{{obj.v}}" 
+        style="top:{{obj.y}}px;left:{{obj.x}}px;width:{{elen}}px;height:{{elen}}px;" 
+        ng-click="fun(obj.v,$event);">
          {{obj.v + 1}} 
         </div>
-      </div>
-      <p>{{ "empty : (" + empty.x + " , " + empty.y  + ")"}}</p>
-      <p>{{ "object 7 : (" + myobj[7].x + ", " + myobj[7].y + ")"}}</p>
-      <h1 ng-show="flag">you win !</h1>
-    </div>  
-    
+      </div>      
+      <!-- <p>{{ "empty : (" + empty.x + " , " + empty.y  + ")"}}</p>
+      <p>{{ "object 7 : (" + myobj[7].x + ", " + myobj[7].y + ")"}}</p>     -->      
+    </div>    
+   
 </body>
 </html>

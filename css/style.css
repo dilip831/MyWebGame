@@ -1,8 +1,8 @@
 /* Center the parent in the page */
 .parent {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background-color: lightcoral;
 
     /* Flexbox to center the parent in the viewport */
@@ -34,3 +34,11 @@
     text-align: center;
     box-sizing: border-box;
   }
+
+  .center-page {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+       /* Center vertically */
+    height: 100vh;            /* Full viewport height */
+    text-align: center;       /* Center text */
+}
