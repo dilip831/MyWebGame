@@ -1,12 +1,16 @@
 var app = angular.module('myApp',[]);
-app.controller('myCtrl',function($scope){  
+app.controller('myCtrl',function($scope){
+    //document.getElementById("radio4").checked = true;  
     $scope.setterFun = function(){
         // Example usage
-    let n = 4;
+    $scope.simple = false;
+    let n = 3;
+    //$scope.level = n;
     if($scope.level)
     {
         n = $scope.level;
     }
+    $scope.level = n+"";    
     $scope.n = n;
     $scope.elen = 100;
     let eleLen = 100;    
@@ -37,7 +41,7 @@ app.controller('myCtrl',function($scope){
     for(var j= 0; j <n; j++){
         if(!(i == (n-1) && j == (n-1)))
         a.push({x:eleLen*j,y:eleLen*i,v:n*i+j});
-    }     
+    }    
     
     }
     const b = [];
@@ -58,7 +62,7 @@ app.controller('myCtrl',function($scope){
     let emptyTop = $scope.empty.y;
     let emptyLeft = $scope.empty.x;
     let d = (currentTop-emptyTop)*(currentTop-emptyTop) + (currentLeft - emptyLeft)*(currentLeft - emptyLeft);
-    if (d <= $scope.elen*$scope.elen){
+    if (d <= $scope.elen*$scope.elen || $scope.simple){
         ele.style.top = $scope.empty.y + 'px';
         ele.style.left = $scope.empty.x + 'px';        
         $scope.empty.y = currentTop;
@@ -77,13 +81,22 @@ app.controller('myCtrl',function($scope){
     }
     if (flag == 1){
         $scope.flag = true;
+        $scope.flag2 = true;
         animateWin();
     }
     console.log($scope.empty.x,$scope.empty.y);        
     };
 
-    $scope.setterFun();
+    $scope.simplifyClicked = function(){
+        if ($scope.simple == true){
+            $scope.simple = false;
+        }
+        else{
+            $scope.simple = true;
+        }
+    }
 
+    $scope.setterFun();   
     
     
 });
@@ -128,5 +141,15 @@ function animateWin() {
         duration: 1,
         ease: "bounce"
     });
-}    
+}  
+
+function helpClicked(){
+    var a = document.getElementById("parHelp");    
+    if (a.style.display=="block"){
+        a.style.display="none";
+    }
+    else{
+        a.style.display="block";
+    }
+}
 

@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyWebGame</title>
-    <link rel="stylesheet" href="css/style.css">    
+    <title>The Spiritual Games</title>
+    <link rel="stylesheet" href="css/teststyle.css">
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>The Spiritual Games</h1>
+        <p>Discover a world of mindful and engaging games</p>
+    </header>
 
-<script src="js/script.js"></script>
-<body>    
-    <div ng-app="myApp" ng-controller = "myCtrl">
-      <div class="game-nav">
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="2"> 2 X 2</label>
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="3"> 3 X 3</label>
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="4"> 4 X 4</label>
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="5"> 5 X 5</label>
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="6"> 6 X 6</label>
-        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="7"> 7 X 7</label>
-      </div>
-      <!-- <p>Game : <input ng-model="level" ng-change = "setterFun();" type="number"></p> -->
-      <div class="center-page">        
-        <h1 id="win-text" ng-show="flag" >🏆 You Won! 🏆</h1>
-      </div>
-      <div id ="parent" class="parent">
-        <div class="child" ng-repeat = "obj in myobj" id="child{{obj.v}}" 
-        style="top:{{obj.y}}px;left:{{obj.x}}px;width:{{elen}}px;height:{{elen}}px;" 
-        ng-click="fun(obj.v,$event);">
-         {{obj.v + 1}} 
+    <!-- Game Categories -->
+    <section class="game-container">
+        <div class="game-card">
+            <h2>🔢 Number Puzzel Games</h2>
+            <p>Challenge yourself with fun number-based puzzles and logic games.</p>
+            <a href="html/numberGame.html">Play Now</a>
         </div>
-      </div>      
-      <!-- <p>{{ "empty : (" + empty.x + " , " + empty.y  + ")"}}</p>
-      <p>{{ "object 7 : (" + myobj[7].x + ", " + myobj[7].y + ")"}}</p>     -->      
-    </div>    
-   
+
+        <div class="game-card">
+            <h2> 🖼️ Image Puzzel Games</h2>
+            <p>Solve exciting image puzzles and test your visual intelligence.</p>
+            <a href="html/jbs.html">Play Now</a>
+        </div>        
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 The Spiritual Games. All rights reserved.</p>
+    </footer>
 </body>
 </html>

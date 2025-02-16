@@ -35,6 +35,20 @@
     box-sizing: border-box;
   }
 
+   /* Position the child inside the parent */
+   .child-image {
+    position: absolute;
+    top: 0px;  /* 50px from the top of the parent */
+    left: 0px; /* 50px from the left of the parent */
+    width: 100px;
+    height: 100px;
+    background-color: lightgreen; 
+    border-radius: 10px;   /* Rounded corners with 10px radius */
+    font-size: 50px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
   .center-page {
     display: flex;
     justify-content: center;  /* Center horizontally */

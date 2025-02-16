@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWebGame</title>
+    <link rel="stylesheet" href="../css/teststyle.css">    
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="../js/script.js"></script>
+<body>    
+    <div ng-app="myApp" ng-controller = "myCtrl">
+      <div class="game-nav">
+        <a href="../index.html" style="text-decoration: none;">Home</a>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="2"> 2 X 2</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="3"> 3 X 3</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="4"> 4 X 4</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="5"> 5 X 5</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="6"> 6 X 6</label>
+        <label><input type="radio" ng-model="level" ng-click = "setterFun();" value="7"> 7 X 7</label>
+      </div>
+      <!-- <p>Game : <input ng-model="level" ng-change = "setterFun();" type="number"></p> -->
+      <div class="center-page">        
+        <h1 id="win-text" ng-show="flag" >🏆 You Won! 🏆</h1>
+      </div>
+      <div id ="parent" class="parent">
+        <div class="child" ng-repeat = "obj in myobj" id="child{{obj.v}}" 
+        style="top:{{obj.y}}px;left:{{obj.x}}px;width:{{elen}}px;height:{{elen}}px;);font-size:{{3*elen/4}}px;" 
+        ng-click="fun(obj.v,$event);">
+         {{obj.v + 1}} 
+        </div>
+      </div>      
+      <!-- <p>{{ "empty : (" + empty.x + " , " + empty.y  + ")"}}</p>
+      <p>{{ "object 7 : (" + myobj[7].x + ", " + myobj[7].y + ")"}}</p>     -->      
+    </div>    
+</body>
+</html>
