@@ -10,7 +10,8 @@ app.controller('myCtrl',function($scope){
     {
         n = $scope.level;
     }
-    $scope.level = n+"";    
+    $scope.level = n+"";
+    $scope.flag2 = false;    
     $scope.n = n;
     $scope.elen = 100;
     let eleLen = 100;    
